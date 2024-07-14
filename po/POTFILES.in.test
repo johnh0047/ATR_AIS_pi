@@ -1,0 +1,13 @@
+src/ATR_AIS_pi.cpp
+src/PreferencesDialog.cpp
+src/AutotrackInfoUI.cpp
+src/AutotrackPrefsUI.cpp
+src/Info.cpp
+src/icons.cpp
+src/ATR_AIS_pi.h
+src/PreferencesDialog.h
+src/AutotrackInfoUI.h
+src/AutotrackPrefsUI.h
+src/Info.h
+src/icons.h
+src/ocpn_plugin.h
