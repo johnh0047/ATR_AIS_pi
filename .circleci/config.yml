@@ -94,7 +94,7 @@ workflows:
 ##        - build-ubuntu-x86_64-2004-focal-gtk3:
 ##            <<: *std-filters
 orbs:
-    cloudsmith: cloudsmith/cloudsmith@1.0.4
+    cloudsmith: cloudsmith/cloudsmith@1.0.5
     win: circleci/windows@5.0
 
 commands:
