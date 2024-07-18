@@ -84,7 +84,7 @@ for:
 
 before_build:
   #- cd c:\project\ocpn_project
-  c:\atemp\OpenCPN_Dev\AIS_Plugin\repo\ATR_AIS_pi
+  -cd c:\atemp\OpenCPN_Dev\AIS_Plugin\repo\ATR_AIS_pi
   - git submodule update --init opencpn-libs
   - ps: Start-FileDownload https://downloads.sourceforge.net/project/opencpnplugins/opencpn_packaging_data/PVW32Con.exe
   - rm -rf build && mkdir build && cd build
