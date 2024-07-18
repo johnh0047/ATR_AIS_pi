@@ -1,4 +1,6 @@
-clone_folder: c:\project\ocpn_project
+##repo\ATR_AIS_pi
+
+clone_folder: c:\atemp\OpenCPN_Dev\AIS_Plugin\repo\ATR_AIS_pi
 shallow_clone: false
 clone_depth: 10
 
@@ -15,13 +17,13 @@ environment:
 
 # use enviornment matrix with job_name to allow build of one or more environments
   matrix:
-  - job_name: Visual Studio 2017
-    APPVEYOR_BUILD_WORKER_IMAGE: Visual Studio 2017
+  #- job_name: Visual Studio 2017
+  #  APPVEYOR_BUILD_WORKER_IMAGE: Visual Studio 2017
 
 ## This can be built in Circleci and is currently the FE2 default
 ##
-#  - job_name: Visual Studio 2022
-#    APPVEYOR_BUILD_WORKER_IMAGE: Visual Studio 2022
+  - job_name: Visual Studio 2022
+  APPVEYOR_BUILD_WORKER_IMAGE: Visual Studio 2022
 
 
 matrix:
@@ -81,7 +83,8 @@ for:
     - 7z x -o%WXWIN% wxWidgets-3.2.1-headers.7z
 
 before_build:
-  - cd c:\project\ocpn_project
+  #- cd c:\project\ocpn_project
+  c:\atemp\OpenCPN_Dev\AIS_Plugin\repo\ATR_AIS_pi
   - git submodule update --init opencpn-libs
   - ps: Start-FileDownload https://downloads.sourceforge.net/project/opencpnplugins/opencpn_packaging_data/PVW32Con.exe
   - rm -rf build && mkdir build && cd build
