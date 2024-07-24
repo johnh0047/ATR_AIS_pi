@@ -78,12 +78,11 @@ set(ALPHA "alpha") #Standard Repos
 # Set if  Cloudsmith Base Repository name does not match your Git Repository name.
 #set(CLOUDSMITH_BASE_REPOSITORY "${GIT_REPOSITORY_NAME}")
 #set(CLOUDSMITH_BASE_REPOSITORY "ATR_AIS")
-set(CLOUDSMITH_BASE_REPOSITORY "atr-ais")   #lowercase, without the pi, - instead of _
+set(CLOUDSMITH_BASE_REPOSITORY "atr_ais")   #lowercase, without the pi
 
 # Set the following to use OpenCPN cloudsmith repositories instead of own repositories
 #set(CLOUDSMITH_USER "opencpn")
-#set(CLOUDSMITH_USER "johnhatfield97@gmail.com")
-set(CLOUDSMITH_USER "john-hatfield")
+set(CLOUDSMITH_USER "johnhatfield97@gmail.com")
 
 #set(XML_INFO_URL "https://opencpn-manuals.github.io/main/ATR_AIS/index.html")
 set(XML_SUMMARY ${SHORT_DESCRIPTION})
