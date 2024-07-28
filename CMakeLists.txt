@@ -38,7 +38,7 @@ if(COMMAND cmake_policy)
     endif(POLICY CMP0043)
     cmake_policy(SET CMP0048 NEW)
 # Need cmake 3.13 to implement this, but raspbian builds are at 3.7.2 and bionic at 3.10 and xenial builds at 3.5.1
-#    cmake_policy(SET CMP0076 NEW)
+    cmake_policy(SET CMP0076 NEW)
     if(POLICY CMP0077)
         cmake_policy(SET CMP0077 NEW)
     endif(POLICY CMP0077)
@@ -78,7 +78,7 @@ set(ALPHA "alpha") #Standard Repos
 # Set if  Cloudsmith Base Repository name does not match your Git Repository name.
 #set(CLOUDSMITH_BASE_REPOSITORY "${GIT_REPOSITORY_NAME}")
 #set(CLOUDSMITH_BASE_REPOSITORY "ATR_AIS")
-set(CLOUDSMITH_BASE_REPOSITORY "atr-ais")   #lowercase, without the pi, - instead of _
+set(CLOUDSMITH_BASE_REPOSITORY "atr_ais")   #lowercase, without the pi, **/not/***- instead of _
 
 # Set the following to use OpenCPN cloudsmith repositories instead of own repositories
 #set(CLOUDSMITH_USER "opencpn")
