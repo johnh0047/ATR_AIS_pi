@@ -203,7 +203,7 @@ if(NOT OCPN_FLATPAK_CONFIG)
         target_link_libraries(${PACKAGE_NAME} windows::headers)
     endif()
 
-    add_subdirectory(ATR_AIS_pi/opencpn-libs/api-18)
+    add_subdirectory({CMAKE_CURRENT_SOURCE_DIR}/opencpn-libs/api-18)
     target_link_libraries(${PACKAGE_NAME} ocpn::api)
 
     add_subdirectory(opencpn-libs/tinyxml)
