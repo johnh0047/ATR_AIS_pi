@@ -184,7 +184,7 @@ SET(SRC ${SRCS} ${HDRS} )
 ## Modify/configure 'Include' Directories below for the Plugin
 ##=============================================================
 
-
+##include_directories(BEFORE ${PROJECT_SOURCE_DIR}/include)   #####not in orig, didn't work
 
 ## Change target_sources to match your project needs.
 ##==============================================================
@@ -203,7 +203,7 @@ if(NOT OCPN_FLATPAK_CONFIG)
         target_link_libraries(${PACKAGE_NAME} windows::headers)
     endif()
 
-    add_subdirectory(opencpn-libs/api-18)
+    add_subdirectory(ATR_AIS_pi/opencpn-libs/api-18)
     target_link_libraries(${PACKAGE_NAME} ocpn::api)
 
     add_subdirectory(opencpn-libs/tinyxml)
