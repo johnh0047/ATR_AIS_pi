@@ -204,7 +204,7 @@ if(NOT OCPN_FLATPAK_CONFIG)
     endif()
 
     add_subdirectory(opencpn-libs/api-18)
-    target_link_libraries(${PACKAGE_NAME} ocpn::api-18)
+    target_link_libraries(${PACKAGE_NAME} ocpn::api)
 
     add_subdirectory(opencpn-libs/tinyxml)
     target_link_libraries(${PACKAGE_NAME} ocpn::tinyxml)
