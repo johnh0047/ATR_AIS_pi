@@ -85,7 +85,7 @@ set(CLOUDSMITH_BASE_REPOSITORY "atr_ais")   #lowercase, without the pi, **/not/*
 #set(CLOUDSMITH_USER "johnhatfield97@gmail.com")
 set(CLOUDSMITH_USER "john-hatfield")
 
-#set(XML_INFO_URL "https://opencpn-manuals.github.io/main/ATR_AIS/index.html")
+set(XML_INFO_URL "https://github.com/johnh0047/ATR_AIS_pi/README.md")
 set(XML_SUMMARY ${SHORT_DESCRIPTION})
 set(XML_DESCRIPTION ${LONG_DESCRIPTION})
 
