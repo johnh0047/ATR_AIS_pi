@@ -1,5 +1,5 @@
 ##---------------------------------------------------------------------------
-## Author:      Douwe Fokkema, following a model of Sean D'Epagnier
+## Author:      Douwe Fokkema, following a model of Sean D'Epagnier  mod jph
 ##***************************************************************************
 ## *   Copyright (C) 2010 by Douwe Fokkema                             *
 ## *   License:     GPLv3+
@@ -83,7 +83,7 @@ set(CLOUDSMITH_BASE_REPOSITORY "atr_ais")   #lowercase, without the pi, **/not/*
 # Set the following to use OpenCPN cloudsmith repositories instead of own repositories
 #set(CLOUDSMITH_USER "opencpn")
 #set(CLOUDSMITH_USER "johnhatfield97@gmail.com")
-set(CLOUDSMITH_USER "john-hatfield")
+set(CLOUDSMITH_USER "johnh0047")
 
 set(XML_INFO_URL "https://github.com/johnh0047/ATR_AIS_pi/README.md")
 set(XML_SUMMARY ${SHORT_DESCRIPTION})
