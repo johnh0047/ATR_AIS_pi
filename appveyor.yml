@@ -9,7 +9,7 @@ platform:
 #  - x64
   - Win32
 
-configuration: Release
+configuration: RelWithDebIndo
 test: OFF
 
 environment:
@@ -95,12 +95,14 @@ before_build:
   - cmake %cmake_parms% ..
 
 build_script:
-  - cmake --build . --target package --config Release
+  - cmake --build . --target package --config RelWithDebInfo
   - python -m ensurepip
   - python -m pip install -q setuptools
   - python -m pip install -q cloudsmith-cli
   - bash ../build/cloudsmith-upload.sh
 
 artifacts:
-  - path: 'build\*.exe'
+  #- path: 'build\*.exe'
+  #  name: installer
+  - path: 'build\ATR_AIS_pi*.tar.gz'
     name: installer
