@@ -41,8 +41,8 @@ workflows:
 ##            <<: *std-filters
 ## flatpak-armhf has Insufficient performance.
 ## Appveyor can also build for Windows.
-        - build-msvc-wx32-2022:
-            <<: *std-filters
+##        - build-msvc-wx32-2022:
+##            <<: *std-filters
         - build-debian-arm64-12-bookworm:
             <<: *std-filters
         - build-debian-armhf-12-bookworm:
