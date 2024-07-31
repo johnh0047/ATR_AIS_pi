@@ -1006,6 +1006,7 @@ void ATR_AIS_pi::SendAISMessages(ArrayOfPlugIn_AIS_Targets* AisTargets) {
     PlugIn_AIS_Target *t;
     for (it = (*AISTargets).begin(); it != (*AISTargets).end(); ++it) {
         t = *it;
+        wxLogMessage("AIS message send requested");
         SendAISN2k(t);
     }
 }
@@ -1017,6 +1018,7 @@ ArrayOfPlugIn_AIS_Targets* ATR_AIS_pi::GetAISTargets() {
         delete AISTargets;
     }
     AISTargets = GetAISTargetArray();
+    wxLogMessage("AIS targets acquired");
     return AISTargets;
 }
 
@@ -1130,7 +1132,7 @@ void ATR_AIS_pi::SendAISN2k(PlugIn_AIS_Target* pTData) {
         ftest << n2kpayload << " : ";
         ftest << dt;
         ftest << "\n\n";
-
+        wxLogMessage("AIS Class A message sent");
     }
     else if (pTData->Class == AIS_CLASS_B) {
         uint8_t MessageID = 18;    //pTData->MID;
@@ -1175,7 +1177,7 @@ void ATR_AIS_pi::SendAISN2k(PlugIn_AIS_Target* pTData) {
         ftest << n2kpayload << " : ";
         ftest << dt;
         ftest << "\n\n";
-
+        wxLogMessage("AIS Class B message sent");
     }
     else if (pTData->Class == AIS_ATON) {
         tN2kAISAtoNReportData vvN2kData;
@@ -1219,6 +1221,7 @@ void ATR_AIS_pi::SendAISN2k(PlugIn_AIS_Target* pTData) {
         ftest << n2kpayload << " : ";
         ftest << dt;
         ftest << "\n\n";
+        wxLogMessage("AIS AtoN message sent");
     }
     // fclose(ftest);
     ftest.close();
