@@ -102,6 +102,7 @@ ATR_AIS_pi::ATR_AIS_pi(void* ppimgr)
     // Create the PlugIn icons  -from shipdriver
     // loads png file for the listing panel icon
     wxFileName fn;
+    wxLogMessage("starting init atr_ais");
     auto path = GetPluginDataDir("ATR_AIS_pi");
     fn.SetPath(path);
     fn.AppendDir("data");
