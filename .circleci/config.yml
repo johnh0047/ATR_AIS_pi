@@ -1,15 +1,17 @@
 ---
 version: 2.1
 
-- run: echo << pipeline.parameters.trigger-string >> | tee -a output.txt
-      - store_artifacts:
-          path: ./output.txt
-          destination: output.txt
-
 parameters:
     run_workflow_deploy:
         type: boolean
         default: true
+
+    - run: echo << pipeline.parameters.trigger-string >> | tee -a output.txt
+      - store_artifacts:
+          path: ./output.txt
+          destination: output.txt
+
+
 
 ## Start of build control of O58 and O562 plugins
 ## run_workflow_deploy_O58
@@ -73,7 +75,7 @@ commands:
                     steps:
                     - cloudsmith/ensure-api-key
                     - cloudsmith/install-cli
-                    - run: bash ci/cloudsmith-upload.sh
+                - run: bash ci/cloudsmith-upload.sh
 
     # if you want to use a local proxy add Acquire::http::Proxy \"http://192.168.1.1:3142\"; to a file called circleci-cache/apt-proxy. This will require
     #    --volume {your local directory}/circleci-cache:/home/circleci/circleci-cache
