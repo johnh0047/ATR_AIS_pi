@@ -1,6 +1,11 @@
 ---
 version: 2.1
 
+- run: echo << pipeline.parameters.trigger-string >> | tee -a output.txt
+      - store_artifacts:
+          path: ./output.txt
+          destination: output.txt
+
 parameters:
     run_workflow_deploy:
         type: boolean
