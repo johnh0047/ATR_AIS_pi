@@ -51,8 +51,8 @@ commands:
                 steps:
                 - run: echo << pipeline.parameters.trigger-string >> | tee -a output.txt
                       - store_artifacts:
-                      path: ./output.txt
-                      destination: output.txt
+                          path: ./output.txt
+                          destination: output.txt
 
 
                 - when:
