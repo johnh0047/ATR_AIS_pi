@@ -6,21 +6,6 @@ parameters:
         type: boolean
         default: true
 
-    - run: echo << pipeline.parameters.trigger-string >> | tee -a output.txt
-      - store_artifacts:
-          path: ./output.txt
-          destination: output.txt
-
-
-
-## Start of build control of O58 and O562 plugins
-## run_workflow_deploy_O58
-##    type: boolean
-##    default: true
-## run_workflow_deploy_O562
-##    type: boolean
-##    default: false
-
 std-filters: &std-filters
     filters:
         branches:
@@ -33,8 +18,6 @@ std-filters: &std-filters
 workflows:
     build_all:
         jobs:
-## ----------------------
-## OpenCPN 5.8 Plugins
 ## ----------------------android, mac, jammy commented out 28/07/24
         - build-debian-arm64-12-bookworm:
             <<: *std-filters
