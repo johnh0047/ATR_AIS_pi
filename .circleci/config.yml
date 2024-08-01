@@ -15,11 +15,6 @@ std-filters: &std-filters
         tags:
             only: /.*/
 
-- run: echo << pipeline.parameters.trigger-string >> | tee -a output.txt
-      - store_artifacts:
-          path: ./output.txt
-          destination: output.txt
-
 workflows:
     build_all:
         jobs:
@@ -54,6 +49,12 @@ commands:
             - when:
                 condition: <<pipeline.parameters.run_workflow_deploy>>
                 steps:
+                - run: echo << pipeline.parameters.trigger-string >> | tee -a output.txt
+                      - store_artifacts:
+                      path: ./output.txt
+                      destination: output.txt
+
+
                 - when:
                     condition: <<parameters.install-python>>
                     steps:
