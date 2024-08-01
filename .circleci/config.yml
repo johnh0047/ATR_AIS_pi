@@ -68,7 +68,7 @@ commands:
                     steps:
                     - cloudsmith/ensure-api-key
                     - cloudsmith/install-cli
-                - run: bash ci/cloudsmith-upload.sh
+                    - run: bash ci/cloudsmith-upload.sh
 
     # if you want to use a local proxy add Acquire::http::Proxy \"http://192.168.1.1:3142\"; to a file called circleci-cache/apt-proxy. This will require
     #    --volume {your local directory}/circleci-cache:/home/circleci/circleci-cache
