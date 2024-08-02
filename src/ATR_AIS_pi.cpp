@@ -1023,7 +1023,7 @@ void ATR_AIS_pi::SendAISMessages(ArrayOfPlugIn_AIS_Targets* AisTargets) {
 
 ArrayOfPlugIn_AIS_Targets* ATR_AIS_pi::GetAISTargets() {
     wxLogMessage("start GetAISTargets");
-    if (AISTargets) {
+    if (AISTargets!=NULL) {
         wxLogMessage("AISTargets exists");
         WX_CLEAR_ARRAY(*AISTargets);
         delete AISTargets;
