@@ -226,12 +226,13 @@ int ATR_AIS_pi::Init(void)
     //init ais listeners
     //may not be needed
     InitAISNMEA0183Listeners();
-
+    wxLogMessage("Init after InitNMEA0183Listeners");
     if (AISTargets) {  // Init may be called more than once, check for cleanup
         WX_CLEAR_ARRAY(*AISTargets);
         delete AISTargets;
     }
     AISTargets = GetAISTargetArray();
+    wxLogMessage("Init after GetAISTargetArray");
     m_TimerAIS.Connect(wxEVT_TIMER,
         wxTimerEventHandler(ATR_AIS_pi::OnTimerAIS), NULL, this);
     m_TimerAIS.Start(30000);  //30 second AIS updates
