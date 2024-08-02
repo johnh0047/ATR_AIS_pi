@@ -1005,7 +1005,7 @@ void ATR_AIS_pi::OnTimerAIS(wxTimerEvent&)
     wxLogMessage("Start AIS ontimer calling GetAISTargets");
     GetAISTargets();
     wxLogMessage("after GetAISTargets");
-    wxLogMessage(wxT("AISTargetArray  %s", AISTargets));
+    //wxLogMessage(wxT("AISTargetArray  %s", AISTargets));
     SendAISMessages(AISTargets);
     wxLogMessage("After SendAISMessage");
 }
