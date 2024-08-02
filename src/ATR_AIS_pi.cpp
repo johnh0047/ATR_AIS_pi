@@ -228,9 +228,11 @@ int ATR_AIS_pi::Init(void)
     InitAISNMEA0183Listeners();
     wxLogMessage("Init after InitNMEA0183Listeners");
     if (AISTargets) {  // Init may be called more than once, check for cleanup
+        wxLogMessage("Init start if(AISTargets)");
         WX_CLEAR_ARRAY(*AISTargets);
         delete AISTargets;
     }
+    wxLogMessage("Init after if(AISTargets)");
     AISTargets = GetAISTargetArray();
     wxLogMessage("Init after GetAISTargetArray");
     m_TimerAIS.Connect(wxEVT_TIMER,
