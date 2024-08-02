@@ -227,6 +227,7 @@ int ATR_AIS_pi::Init(void)
     //may not be needed
     InitAISNMEA0183Listeners();
     wxLogMessage("Init after InitNMEA0183Listeners");
+    /*  not available??
     if (AISTargets) {  // Init may be called more than once, check for cleanup
         wxLogMessage("Init start if(AISTargets)");
         wxLogMessage(wxT("AISTargets %s", AISTargets));
@@ -235,7 +236,7 @@ int ATR_AIS_pi::Init(void)
     }
     wxLogMessage("Init after if(AISTargets)");
     AISTargets = GetAISTargetArray();
-    wxLogMessage("Init after GetAISTargetArray");
+    wxLogMessage("Init after GetAISTargetArray");*/
     m_TimerAIS.Connect(wxEVT_TIMER,
         wxTimerEventHandler(ATR_AIS_pi::OnTimerAIS), NULL, this);
     m_TimerAIS.Start(30000);  //30 second AIS updates
