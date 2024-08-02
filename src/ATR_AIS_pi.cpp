@@ -1022,12 +1022,23 @@ void ATR_AIS_pi::SendAISMessages(ArrayOfPlugIn_AIS_Targets* AisTargets) {
 
 
 ArrayOfPlugIn_AIS_Targets* ATR_AIS_pi::GetAISTargets() {
+    wxLogMessage("start GetAISTargets");
     if (AISTargets) {
+        wxLogMessage("AISTargets exists");
         WX_CLEAR_ARRAY(*AISTargets);
         delete AISTargets;
     }
+    else {
+        wxLogMessage("AISTargets empty");
+    }
     AISTargets = GetAISTargetArray();
-    wxLogMessage("AIS targets acquired");
+    if (AISTargets) {
+        wxLogMessage("AIS targets acquired");
+    }
+    else {
+        wxLogMessage("No AIS targets acquired");
+    }
+    
     return AISTargets;
 }
 
