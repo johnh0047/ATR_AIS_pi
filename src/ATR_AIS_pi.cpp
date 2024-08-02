@@ -229,6 +229,7 @@ int ATR_AIS_pi::Init(void)
     wxLogMessage("Init after InitNMEA0183Listeners");
     if (AISTargets) {  // Init may be called more than once, check for cleanup
         wxLogMessage("Init start if(AISTargets)");
+        wxLogMessage(wxT("AISTargets %s", AISTargets));
         WX_CLEAR_ARRAY(*AISTargets);
         delete AISTargets;
     }
