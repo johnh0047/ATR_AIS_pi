@@ -1002,8 +1002,11 @@ void ATR_AIS_pi::SetP70Tracking()
 
 void ATR_AIS_pi::OnTimerAIS(wxTimerEvent&)
 {
+    wxLogMessage("Start AIS ontimer calling GetAISTargets");
     GetAISTargets();
+    wxLogMessage("after GetAISTargets");
     SendAISMessages(AISTargets);
+    wxLogMessage("After SendAISMessage");
 }
 
 void ATR_AIS_pi::SendAISMessages(ArrayOfPlugIn_AIS_Targets* AisTargets) {
