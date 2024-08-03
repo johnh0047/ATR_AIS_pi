@@ -227,6 +227,7 @@ int ATR_AIS_pi::Init(void)
     //may not be needed
     InitAISNMEA0183Listeners();
     wxLogMessage("Init after InitNMEA0183Listeners");
+    AISTargets = NULL;
     /*  not available??
     if (AISTargets) {  // Init may be called more than once, check for cleanup
         wxLogMessage("Init start if(AISTargets)");
