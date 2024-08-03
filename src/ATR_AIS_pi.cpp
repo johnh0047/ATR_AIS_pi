@@ -256,7 +256,8 @@ int ATR_AIS_pi::Init(void)
         }
     }
     if (!found_handle) wxLogMessage(wxT("nmea2000 handle not found"));
-    std::vector<int> pgn_list = { 127250, 126208 };
+    //std::vector<int> pgn_list = { 127250, 126208 };
+    std::vector<int> pgn_list = { 127250, 126208, 129038, 129039, 129041 };
     CommDriverResult xx = RegisterTXPGNs(m_handleN2k, pgn_list);
 
     wxLogMessage(wxT("ATR_AIS version %i.%i.%i"), GetPlugInVersionMajor(), GetPlugInVersionMinor(), GetPlugInVersionPatch());
@@ -1023,7 +1024,7 @@ void ATR_AIS_pi::SendAISMessages(ArrayOfPlugIn_AIS_Targets* AisTargets) {
 
 ArrayOfPlugIn_AIS_Targets* ATR_AIS_pi::GetAISTargets() {
     wxLogMessage("start GetAISTargets");
-    if (AISTargets!=NULL) {
+    if (AISTargets) {
         wxLogMessage("AISTargets exists");
         WX_CLEAR_ARRAY(*AISTargets);
         delete AISTargets;
