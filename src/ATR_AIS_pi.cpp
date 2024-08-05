@@ -967,6 +967,16 @@ void ATR_AIS_pi::SetPilotHeading(double heading)
     //wxLogMessage(wxT("ATR_AIS_pi SetAutopilotHeading byte0 = %0x, byte1 = %0x"), byte0, byte1);
     int PGN = 126208;
     WriteCommDriverN2K(m_handleN2k, PGN, 0xcc, 6, payload);
+    std::fstream ftest;
+    ftest.open("C:\\atemp\\OpenCPN_Dev\\aistest.txt", std::ios::app);
+    time_t now = time(0);
+    char* dt = ctime(&now);
+    ftest << PGN << " : ";
+    ftest << payload << " : ";
+    ftest << dt;
+    ftest << "\n\n";
+    wxLogMessage("Pilot heading message sent");
+    ftest.close();
 }
 
 void ATR_AIS_pi::SetPilotAuto(){
@@ -975,6 +985,16 @@ void ATR_AIS_pi::SetPilotAuto(){
     //  01, 0x63, 0xff, 0x00, 0xf8, 0x04, 0x01, 0x3b, 0x07, 0x03, 0x04, 0x04, 0x00, 0x00, 0x05, 0xff, 0xff
     int PGN = 126208;
     WriteCommDriverN2K(m_handleN2k, PGN, 0xcc, 3, payload);
+    std::fstream ftest;
+    ftest.open("C:\\atemp\\OpenCPN_Dev\\aistest.txt", std::ios::app);
+    time_t now = time(0);
+    char* dt = ctime(&now);
+    ftest << PGN << " : ";
+    ftest << payload << " : ";
+    ftest << dt;
+    ftest << "\n\n";
+    wxLogMessage("Pilot auto message sent");
+    ftest.close();
 }
 
 void ATR_AIS_pi::SetPilotStandby()
@@ -987,6 +1007,16 @@ void ATR_AIS_pi::SetPilotStandby()
     // length = 17
     int PGN = 126208;
     WriteCommDriverN2K(m_handleN2k, PGN, 0xcc, 6, payload);
+    std::fstream ftest;
+    ftest.open("C:\\atemp\\OpenCPN_Dev\\aistest.txt", std::ios::app);
+    time_t now = time(0);
+    char* dt = ctime(&now);
+    ftest << PGN << " : ";
+    ftest << payload << " : ";
+    ftest << dt;
+    ftest << "\n\n";
+    wxLogMessage("Pilot standby message sent");
+    ftest.close();
 }
 
 void ATR_AIS_pi::SetP70Tracking()
@@ -996,6 +1026,16 @@ void ATR_AIS_pi::SetP70Tracking()
     wxLogMessage(wxT("ATR_AIS_pi set :Tracking"));
     int PGN = 126208;
     WriteCommDriverN2K(m_handleN2k, PGN, 0xcc, 6, payload);
+    std::fstream ftest;
+    ftest.open("C:\\atemp\\OpenCPN_Dev\\aistest.txt", std::ios::app);
+    time_t now = time(0);
+    char* dt = ctime(&now);
+    ftest << PGN << " : ";
+    ftest << payload << " : ";
+    ftest << dt;
+    ftest << "\n\n";
+    wxLogMessage("P70 tracking message sent");
+    ftest.close();
 }
 
 //**********************************************************
@@ -1025,15 +1065,15 @@ void ATR_AIS_pi::SendAISMessages(ArrayOfPlugIn_AIS_Targets* AisTargets) {
 
 ArrayOfPlugIn_AIS_Targets* ATR_AIS_pi::GetAISTargets() {
     wxLogMessage("start GetAISTargets");
-    if (AISTargets) {
+    //if (AISTargets) {
         wxLogMessage("AISTargets exists");
         WX_CLEAR_ARRAY(*AISTargets);
-        delete AISTargets;
+        //delete AISTargets;
         wxLogMessage("AISTaregts deleted");
-    }
-    else {
-        wxLogMessage("AISTargets empty");
-    }
+    //}
+    //else {
+        //wxLogMessage("AISTargets empty");
+    //}
     AISTargets = GetAISTargetArray();
     if (AISTargets) {
         wxLogMessage("AIS targets acquired");
@@ -1064,8 +1104,8 @@ void ATR_AIS_pi::SendAISN2k(PlugIn_AIS_Target* pTData) {
         return;
     }
     //std::shared_ptr<std::vector<uint8_t>> n2kpayload(new std::vector<uint8_t>);
-    std::shared_ptr<std::vector<uint8_t>> n2kpayload(new std::vector<uint8_t>(200));
-    // fill(n2kpayload.begin(), n2kpayload.end(), 0);
+    //std::shared_ptr<std::vector<uint8_t>> n2kpayload(new std::vector<uint8_t>(200));
+    
     int i;
     // FILE *ftest;
     // ftest = fopen("C:\\atemp\\OpenCPN_Dev\\aistest.txt", "a");
@@ -1137,20 +1177,17 @@ void ATR_AIS_pi::SendAISN2k(PlugIn_AIS_Target* pTData) {
             Accuracy, RAIM, Seconds, COG, SOG, Heading, ROT,
             NavStatus);
         int PGN = 129038;
-        // for (const auto& ch : N2kMsg.Data) n2kpayload.push_back(ch);
-        // N2kMsg.DataLen = sizeof(N2kMsg.Data);
+        std::shared_ptr<std::vector<uint8_t>> n2kpayload(new std::vector<uint8_t>(xxN2kMsg.DataLen,0));
         ftest << PGN << " : ";
         for (i = 0; i < xxN2kMsg.DataLen; i++) {
-            //n2kpayload.push_back(xxN2kMsg.Data[i]);
             n2kpayload->at(i) = xxN2kMsg.Data[i];
             ftest << "0x" << std::setw(2) << std::setfill('0') << std::hex<< int(xxN2kMsg.Data[i]) << " ";
         }
         ftest << " : " << dt;
         ftest << "\n";
-
+        
         WriteCommDriverN2K(m_handleN2k, PGN, 0xff, 6,n2kpayload);  // was 0xcc for autopilot, 0xff=any
-        // destination, 0x02=element display
-// fprintf(ftest, "%d %s\n",PGN, n2kpayload);
+        
         ftest << PGN << " : ";
         ftest << n2kpayload << " : ";
         ftest << dt;
@@ -1185,17 +1222,15 @@ void ATR_AIS_pi::SendAISN2k(PlugIn_AIS_Target* pTData) {
         }
         SetN2kPGN129039(xxN2kMsg, MessageID, Repeat, UserID, Latitude, Longitude,Accuracy, RAIM, Seconds, COG, SOG,AISTransceiverInformation, Heading, Unit, Display, DSC,Band, Msg22, Mode, State);
         int PGN = 129039;
-        // for (const auto& ch : N2kMsg.Data) n2kpayload.push_back(ch);
+        std::shared_ptr<std::vector<uint8_t>> n2kpayload(new std::vector<uint8_t>(xxN2kMsg.DataLen, 0));
         ftest << PGN << " : ";
         for (i = 0; i < xxN2kMsg.DataLen; i++) {
-            //n2kpayload.push_back(xxN2kMsg.Data[i]);
             n2kpayload->at(i) = xxN2kMsg.Data[i];
             ftest << "0x" << std::setw(2) << std::setfill('0') << std::hex<< int(xxN2kMsg.Data[i]) << " ";
         }
         ftest << " : " << dt;
         ftest << "\n";
         WriteCommDriverN2K(m_handleN2k, PGN, 0xff, 6, n2kpayload);
-        // fprintf(ftest, "%d %d\n", PGN, n2kpayload);
         ftest << PGN << " : ";
         ftest << n2kpayload << " : ";
         ftest << dt;
@@ -1229,23 +1264,20 @@ void ATR_AIS_pi::SendAISN2k(PlugIn_AIS_Target* pTData) {
         // AtoN
         SetN2kPGN129041(xxN2kMsg, vvN2kData);
         int PGN = 129041;
-        // for (const auto& ch : N2kMsg.Data) n2kpayload.push_back(ch);
+        std::shared_ptr<std::vector<uint8_t>> n2kpayload(new std::vector<uint8_t>(xxN2kMsg.DataLen, 0));
         ftest << PGN << " : ";
         for (i = 0; i < xxN2kMsg.DataLen; i++) {
-            //n2kpayload.push_back(xxN2kMsg.Data[i]);
             n2kpayload->at(i) = xxN2kMsg.Data[i];
             ftest << "0x" << std::setw(2) << std::setfill('0') << std::hex<< int(xxN2kMsg.Data[i]) << " ";
         }
         ftest << " : " << dt;
         ftest << "\n";
         WriteCommDriverN2K(m_handleN2k, PGN, 0x02, 6, n2kpayload);
-        // fprintf(ftest, "%d %d\n", PGN, n2kpayload);
         ftest << PGN << " : ";
         ftest << n2kpayload << " : ";
         ftest << dt;
         ftest << "\n\n";
         wxLogMessage("AIS AtoN message sent");
     }
-    // fclose(ftest);
     ftest.close();
 }
