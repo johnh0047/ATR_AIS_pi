@@ -1068,7 +1068,8 @@ ArrayOfPlugIn_AIS_Targets* ATR_AIS_pi::GetAISTargets() {
     //if (AISTargets) {
         wxLogMessage("AISTargets exists");
         WX_CLEAR_ARRAY(*AISTargets);
-        //delete AISTargets;
+        wxLogMessage("AISTaregts cleared");
+        delete AISTargets;
         wxLogMessage("AISTaregts deleted");
     //}
     //else {
