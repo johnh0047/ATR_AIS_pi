@@ -240,7 +240,7 @@ int ATR_AIS_pi::Init(void)
     wxLogMessage("Init after GetAISTargetArray");*/
     m_TimerAIS.Connect(wxEVT_TIMER,
         wxTimerEventHandler(ATR_AIS_pi::OnTimerAIS), NULL, this);
-    m_TimerAIS.Start(30000);  //30 second AIS updates
+    m_TimerAIS.Start(1000);  // changed to 1 second to check if payload needs a delete (30000);  //30 second AIS updates
 
 
 
@@ -1066,9 +1066,9 @@ void ATR_AIS_pi::SendAISMessages(ArrayOfPlugIn_AIS_Targets* AisTargets) {
 ArrayOfPlugIn_AIS_Targets* ATR_AIS_pi::GetAISTargets() {
     wxLogMessage("start GetAISTargets");
     //if (AISTargets) {
-        wxLogMessage("AISTargets exists");
+        //wxLogMessage("AISTargets exists");
         //WX_CLEAR_ARRAY(*AISTargets);
-        wxLogMessage("AISTaregts cleared");
+        //wxLogMessage("AISTaregts cleared");
         delete AISTargets;
         wxLogMessage("AISTaregts deleted");
     //}
