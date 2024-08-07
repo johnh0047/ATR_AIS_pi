@@ -34,7 +34,7 @@ workflows:
             <<: *std-filters
 orbs:
     cloudsmith: cloudsmith/cloudsmith@1.0.5
-   ## win: circleci/windows@5.0
+    win: circleci/windows@5.0
 
 commands:
     deploy-code:
@@ -50,9 +50,9 @@ commands:
                 condition: <<pipeline.parameters.run_workflow_deploy>>
                 steps:
                 - run: echo << pipeline.parameters.trigger-string >> | tee -a output.txt
-                      - store_artifacts:
-                          path: ./output.txt
-                          destination: output.txt
+                  - store_artifacts:
+                    path: ./output.txt
+                    destination: output.txt
 
 
                 - when:
