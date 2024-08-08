@@ -1187,7 +1187,7 @@ void ATR_AIS_pi::SendAISN2k(PlugIn_AIS_Target* pTData) {
         ftest << " : " << dt;
         ftest << "\n";
         
-        WriteCommDriverN2K(m_handleN2k, PGN, 0xff, 6,n2kpayload);  // was 0xcc for autopilot, 0xff=any
+        WriteCommDriverN2K(m_handleN2k, PGN, 0x02, 6,n2kpayload);  // was 0xcc for autopilot, 0xff=any
         
         ftest << PGN << " : ";
         ftest << n2kpayload << " : ";
@@ -1231,7 +1231,7 @@ void ATR_AIS_pi::SendAISN2k(PlugIn_AIS_Target* pTData) {
         }
         ftest << " : " << dt;
         ftest << "\n";
-        WriteCommDriverN2K(m_handleN2k, PGN, 0xff, 6, n2kpayload);
+        WriteCommDriverN2K(m_handleN2k, PGN, 0x02, 6, n2kpayload);
         ftest << PGN << " : ";
         ftest << n2kpayload << " : ";
         ftest << dt;
